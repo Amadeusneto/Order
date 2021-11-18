@@ -1,0 +1,19 @@
+version: '3'
+services:
+  database_mysql:
+    image: mysql:5.7
+    restart: always
+    network_mode: "host"
+    environment:
+      MYSQL_ROOT_PASSWORD: orderapi
+      MYSQL_DATABASE: order
+      MYSQL_USER: order
+      MYSQL_PASSWORD: orderapi
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    network_mode: "host"
+    depends_on:
+      - "database_mysql"
