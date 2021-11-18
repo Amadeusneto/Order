@@ -22,6 +22,6 @@ public class FindOrderServiceTest extends BaseOrderServiceTest {
     @Test
     public void findMarketPlaceByIdTest() {
         Order order = findOrderService.findById(13000L);
-        assertThat(order.getOrderCode()).isEqualTo(13000L);
+        assertThat(order.getId()).isEqualTo(13000L);
     }
 }

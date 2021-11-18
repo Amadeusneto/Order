@@ -2,6 +2,7 @@ package br.com.amadeus.order.bdd;
 
 
 import br.com.amadeus.order.dto.request.OrderRequest;
+import br.com.amadeus.order.dto.request.ProductRequest;
 import com.google.gson.Gson;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -24,13 +25,17 @@ public class RunCucumberTest {
 
     protected OrderRequest getOrderRequest() {
         return OrderRequest.builder()
-                .orderCode(1L)
                 .controlNumber(3L)
                 .registrationDate(new Date())
-                .name("PIZZA")
-                .valor(23.5D)
                 .quantity(5)
                 .clientCode(10L)
+                .build();
+    }
+
+    protected ProductRequest getProductRequest() {
+        return ProductRequest.builder()
+                .name("PIZZA")
+                .value(23.5D)
                 .build();
     }
 

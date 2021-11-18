@@ -1,6 +1,8 @@
 package br.com.amadeus.order.service;
 
+import br.com.amadeus.order.dto.request.OrderListRequest;
 import br.com.amadeus.order.dto.request.OrderRequest;
+import br.com.amadeus.order.dto.response.OrderList;
 import br.com.amadeus.order.mappers.OrderMapper;
 import br.com.amadeus.order.model.Order;
 import br.com.amadeus.order.repository.OrderRepository;
@@ -17,25 +19,28 @@ public class BaseOrderServiceTest {
     @MockBean
     protected OrderRepository orderRepository;
 
-    protected OrderRequest orderRequest;
-    protected Order order;
+    protected OrderListRequest orderListRequest;
+    protected OrderList orderList;
 
-    protected OrderRequest getOrderRequest() {
-        return OrderRequest.builder()
-                .orderCode(5L)
-                .controlNumber(7L)
-                .registrationDate(new Date())
-                .name("PIZZA")
-                .valor(78.0D)
-                .quantity(1)
-                .clientCode(10L)
-                .build();
+    protected OrderListRequest getOrderRequest() {
+        OrderListRequest orderListRequest1 = new OrderListRequest();
+        for (OrderRequest orderRequest : orderListRequest.getOrders()) {
+            orderRequest.setControlNumber(13L);
+            orderRequest.setRegistrationDate(new Date());
+            orderRequest.setQuantity(1);
+            orderRequest.setClientCode(10L);
+            orderRequest.getProduct().setName("PIZZA");
+            orderRequest.getProduct().setValue(78.0);
+            orderListRequest1.getOrders().add(orderRequest);
+        }
+        return orderListRequest1;
     }
 
     protected Order getOrder() {
-        OrderRequest orderRequest = getOrderRequest();
-        Order orderX = OrderMapper.INSTANCE.createOrderRequestToOrderEntity(orderRequest);
-        orderX.setOrderCode(16000L);
-        return orderX;
+        OrderListRequest orderListRequest = getOrderRequest();
+        OrderList orderListX = OrderMapper.INSTANCE.orderListToEntity(orderListRequest);
+        Order orders = OrderMapper.INSTANCE.orderToOrderListEntity(orderListX);
+        orderListX.getOrders().get(0).setId(16000L);
+        return orders;
     }
 }

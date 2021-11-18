@@ -1,42 +1,30 @@
 package br.com.amadeus.order.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @Entity
-@Table
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class Order {
 
     @Id
-    private Long orderCode;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.MERGE)
-    private List<OrderProduct> orderProduct;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Product product;
 
     @NotEmpty(message = "O numero controle deve ser preenchido.")
+    @Column(unique = true)
     private Long controlNumber;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date registrationDate;
+    private Date registrationDate = new Date();
 
-    @NotEmpty(message = "O nome deve ser preenchido.")
-    private String name;
-
-    @NotEmpty(message = "O valor deve ser preenchido.")
-    private Double valor;
-
-    private Integer quantity;
+    private Integer quantity = 1;
 
     @NotEmpty(message = "O codigo cliente deve ser preenchido.")
     private Long clientCode;

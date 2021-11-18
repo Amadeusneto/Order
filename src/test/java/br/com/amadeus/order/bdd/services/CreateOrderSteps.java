@@ -2,6 +2,7 @@ package br.com.amadeus.order.bdd.services;
 
 import br.com.amadeus.order.bdd.RunCucumberTest;
 import br.com.amadeus.order.dto.request.OrderRequest;
+import br.com.amadeus.order.dto.request.ProductRequest;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,11 +20,13 @@ public class CreateOrderSteps extends RunCucumberTest {
     private MockMvc mvc;
 
     private OrderRequest orderRequest;
+    private ProductRequest productRequest;
     ResultActions result;
 
     @Given("I have a valid order")
     public void prepareOrder() throws Exception {
         orderRequest = getOrderRequest();
+        productRequest = getProductRequest();
     }
 
     @When("I call service to save the new order")
