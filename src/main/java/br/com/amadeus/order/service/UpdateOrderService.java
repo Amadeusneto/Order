@@ -14,7 +14,7 @@ public class UpdateOrderService {
 
     public Order save(Long id, Order order) {
         orderRepository.findById(id).orElseThrow(() -> new OrderNotFoundException());
-        order.setOrderCode(id);
+        order.setId(id);
         return orderRepository.save(order);
     }
 }
