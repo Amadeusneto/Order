@@ -14,22 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @AllArgsConstructor
 public class FindOrderRestController implements OrderController {
 
     private FindOrderService findOrderService;
-
-    @ApiOperation(value = "Find All Order")
-    @GetMapping
-    public ResponseEntity<?> list() {
-        List<Order> order = findOrderService.list();
-        OrderResponse orderResponse = OrderMapper.INSTANCE.orderEntityToOrderResponse((Order) order);
-        return ResponseEntity.ok().body(orderResponse);
-    }
-
 
     @ApiOperation(value = "Find Order by ID")
     @GetMapping("/{id}")
