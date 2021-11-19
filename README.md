@@ -42,6 +42,9 @@ Para rodar os testes deverá ser executado as classes:
 
 ***
 
+## Script SQL
+
+Será necessário rodar o script manualmente.
 
 ## Documentação
 
