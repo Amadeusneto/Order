@@ -20,6 +20,7 @@ public enum OrderErrors {
 
     // Application Errors
     ORDER_NOT_FOUND(HttpStatus.BAD_REQUEST, 400, "error.orderNotFound"),
+    ORDER_NUMBER_EXISTS(HttpStatus.BAD_REQUEST, 400, "error.numberExists"),
     ;
 
     private final HttpStatus httpStatus;

@@ -80,7 +80,7 @@ public class OrderGlobalExceptionHandler extends ResponseEntityExceptionHandler 
 
     @ExceptionHandler(OrderControlNumberExistingException.class)
     public ResponseEntity<Object> handleControlNumberExistingException(OrderControlNumberExistingException e, WebRequest request) {
-        return handleException(OrderErrors.BAD_REQUEST_ERROR, e.getMessage(), e);
+        return handleException(OrderErrors.ORDER_NUMBER_EXISTS, e.getMessage(), e);
     }
 
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)

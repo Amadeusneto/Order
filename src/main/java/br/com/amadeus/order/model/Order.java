@@ -19,6 +19,7 @@ public class Order {
     private Product product;
 
     @NotNull(message = "O numero controle deve ser preenchido.")
+    @Column(unique = true)
     private Long controlNumber;
 
     private LocalDate registrationDate = LocalDate.now();
