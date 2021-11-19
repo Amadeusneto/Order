@@ -32,7 +32,7 @@ public class CreateOrderService {
     }
 
     private void validateControlNumberExistingOrder(Order order) {
-        if (orderRepository.findById(order.getControlNumber()).isPresent()) {
+        if (orderRepository.findByControlNumber(order.getControlNumber()).isPresent()) {
             throw new OrderControlNumberExistingException();
         }
     }
