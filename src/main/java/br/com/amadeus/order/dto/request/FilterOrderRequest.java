@@ -2,8 +2,10 @@ package br.com.amadeus.order.dto.request;
 
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 public class FilterOrderRequest {
-    private String controlNumber;
-    private String registrationDate;
+    private Long clientCode;
+    private LocalDate registrationDate;
 }
