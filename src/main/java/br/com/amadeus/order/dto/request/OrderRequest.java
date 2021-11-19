@@ -17,4 +17,6 @@ public class OrderRequest {
     private Integer quantity;
     private Long clientCode;
     private ProductRequest product;
+
+
 }
