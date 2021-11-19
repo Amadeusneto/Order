@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @CucumberContextConfiguration
 @SpringBootTest
@@ -26,7 +26,7 @@ public class RunCucumberTest {
     protected OrderRequest getOrderRequest() {
         return OrderRequest.builder()
                 .controlNumber(3L)
-                .registrationDate(new Date())
+                .registrationDate(LocalDate.now())
                 .quantity(5)
                 .clientCode(10L)
                 .build();
