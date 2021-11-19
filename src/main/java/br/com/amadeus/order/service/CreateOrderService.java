@@ -2,7 +2,7 @@ package br.com.amadeus.order.service;
 
 import br.com.amadeus.order.dto.response.OrderList;
 import br.com.amadeus.order.exception.ControlNumberExistingException;
-import br.com.amadeus.order.exception.OrderLimitedTen;
+import br.com.amadeus.order.exception.OrderLimitedTenException;
 import br.com.amadeus.order.exception.OrderWithoutProductsException;
 import br.com.amadeus.order.model.Order;
 import br.com.amadeus.order.repository.OrderRepository;
@@ -59,7 +59,7 @@ public class CreateOrderService {
 
     private void validateOrderMoreThanTenProducts(OrderList orderList) {
         if (orderList.getOrders() != null && orderList.getOrders().size() > 10) {
-            throw new OrderLimitedTen("O pedido está limitado a 10.");
+            throw new OrderLimitedTenException("O pedido está limitado a 10.");
         }
     }
 }

@@ -25,7 +25,7 @@ public class RunCucumberTest {
 
     protected OrderRequest getOrderRequest() {
         return OrderRequest.builder()
-                .controlNumber(3L)
+                .controlNumber(87L)
                 .registrationDate(LocalDate.now())
                 .quantity(5)
                 .clientCode(10L)

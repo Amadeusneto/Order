@@ -75,4 +75,19 @@ public class OrderGlobalExceptionHandler extends ResponseEntityExceptionHandler 
                 .body(OrderBaseResponse.notOk(errors));
     }
 
+    @ExceptionHandler(ControlNumberExistingException.class)
+    public ResponseEntity<Object> handleControlNumberExistingException(ControlNumberExistingException e, WebRequest request) {
+        return handleException(OrderErrors.BAD_REQUEST_ERROR, e.getMessage(), e);
+    }
+
+    @ExceptionHandler(OrderLimitedTenException.class)
+    public ResponseEntity<Object> orderLimitedTenException(ControlNumberExistingException e, WebRequest request) {
+        return handleException(OrderErrors.BAD_REQUEST_ERROR, e.getMessage(), e);
+    }
+
+    @ExceptionHandler(OrderWithoutProductsException.class)
+    public ResponseEntity<Object> orderWithoutProductsException(ControlNumberExistingException e, WebRequest request) {
+        return handleException(OrderErrors.BAD_REQUEST_ERROR, e.getMessage(), e);
+    }
+
 }
