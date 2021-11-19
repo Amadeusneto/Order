@@ -77,17 +77,23 @@ public class OrderGlobalExceptionHandler extends ResponseEntityExceptionHandler 
     }
 
     @ExceptionHandler(ControlNumberExistingException.class)
-    public ResponseEntity<Object> handleControlNumberExistingException(SQLIntegrityConstraintViolationException e, WebRequest request) {
+    public ResponseEntity<Object> handleControlNumberExistingException(ControlNumberExistingException e, WebRequest request) {
         return handleException(OrderErrors.BAD_REQUEST_ERROR, e.getMessage(), e);
     }
 
+    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+    public ResponseEntity<Object> handleSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException e, WebRequest request) {
+        return handleException(OrderErrors.BAD_REQUEST_ERROR, e.getMessage(), e);
+    }
+
+
     @ExceptionHandler(OrderLimitedTenException.class)
-    public ResponseEntity<Object> orderLimitedTenException(OrderLimitedTenException e, WebRequest request) {
+    public ResponseEntity<Object>  handleorderLimitedTenException(OrderLimitedTenException e, WebRequest request) {
         return handleException(OrderErrors.BAD_REQUEST_ERROR, e.getMessage(), e);
     }
 
     @ExceptionHandler(OrderWithoutProductsException.class)
-    public ResponseEntity<Object> orderWithoutProductsException(OrderWithoutProductsException e, WebRequest request) {
+    public ResponseEntity<Object>  handleorderWithoutProductsException(OrderWithoutProductsException e, WebRequest request) {
         return handleException(OrderErrors.BAD_REQUEST_ERROR, e.getMessage(), e);
     }
 

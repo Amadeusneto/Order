@@ -7,8 +7,4 @@ public class ControlNumberExistingException extends RuntimeException {
     public ControlNumberExistingException(String mensagem) {
         super(mensagem);
     }
-
-    public ControlNumberExistingException(String mensagem, Throwable causa) {
-        super(mensagem, causa);
-    }
 }
