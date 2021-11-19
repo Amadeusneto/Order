@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @Entity
@@ -23,6 +24,8 @@ public class Order {
     private Long controlNumber;
 
     private LocalDate registrationDate = LocalDate.now();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+    String formattedString = registrationDate.format(formatter);
 
     private Integer quantity = 1;
 
