@@ -35,7 +35,7 @@ public class OrderBaseResponse<T> {
 
         @JsonValue
         private String value;
-        }
+    }
 
     @AllArgsConstructor
     @Getter

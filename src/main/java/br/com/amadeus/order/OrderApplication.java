@@ -9,9 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class OrderApplication {
 
-	public static final Logger LOGGER = LogManager.getLogger(OrderApplication.class);
-	public static void main(String[] args) {
-		SpringApplication.run(OrderApplication.class, args);
-	}
+    public static final Logger LOGGER = LogManager.getLogger(OrderApplication.class);
+
+    public static void main(String[] args) {
+        SpringApplication.run(OrderApplication.class, args);
+    }
 
 }

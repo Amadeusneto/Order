@@ -13,7 +13,10 @@ public interface OrderMapper {
     OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
 
     Order createOrderRequestToOrderEntity(OrderRequest orderRequest);
+
     OrderResponse orderEntityToOrderResponse(Order order);
+
     OrderList orderListToEntity(OrderListRequest orderListRequest);
+
     Order orderToOrderListEntity(OrderList orderList);
 }

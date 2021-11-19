@@ -12,7 +12,6 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderRequest {
-
     private Long controlNumber;
     private Date registrationDate;
     private Integer quantity;

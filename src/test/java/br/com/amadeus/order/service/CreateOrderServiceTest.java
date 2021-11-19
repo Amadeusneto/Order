@@ -1,5 +1,6 @@
 package br.com.amadeus.order.service;
 
+import br.com.amadeus.order.mappers.OrderMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -16,8 +17,6 @@ public class CreateOrderServiceTest extends BaseOrderServiceTest {
 
     @Test
     public void saveOrderTest() {
-       // Order orderSaved = createOrderService.save(OrderMapper.INSTANCE.orderListToEntity(orderListRequest));
-        //OrderListRequest orderSaved = createOrderService.save(orderListRequest);
-       // assertThat(orderSaved.getOrders().get(0).getId()).isEqualTo(13000L);
+         createOrderService.save(OrderMapper.INSTANCE.orderListToEntity(orderListRequest));
     }
 }

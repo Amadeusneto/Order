@@ -6,5 +6,6 @@ import org.springframework.stereotype.Component;
 @Component
 public interface OrderBaseMessageSource {
     String getMessage(String resource, Object[] params);
+
     String getMessage(OrderErrors error, Object[] params);
 }

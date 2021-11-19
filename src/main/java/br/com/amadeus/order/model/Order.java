@@ -3,12 +3,12 @@ package br.com.amadeus.order.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 public class Order {
 
     @Id
@@ -18,7 +18,7 @@ public class Order {
     @OneToOne(cascade = CascadeType.ALL)
     private Product product;
 
-    @NotEmpty(message = "O numero controle deve ser preenchido.")
+    @NotNull(message = "O numero controle deve ser preenchido.")
     @Column(unique = true)
     private Long controlNumber;
 
@@ -27,7 +27,7 @@ public class Order {
 
     private Integer quantity = 1;
 
-    @NotEmpty(message = "O codigo cliente deve ser preenchido.")
+    @NotNull(message = "O código cliente deve ser preenchido.")
     private Long clientCode;
 
     private Double orderTotal;
