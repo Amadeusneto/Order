@@ -1,7 +1,6 @@
 package br.com.amadeus.order.model;
 
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -23,7 +22,6 @@ public class Order {
     @Column(unique = true)
     private Long controlNumber;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate registrationDate = LocalDate.now();
 
     private Integer quantity = 1;
