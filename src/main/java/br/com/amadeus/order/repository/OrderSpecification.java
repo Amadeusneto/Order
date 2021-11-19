@@ -17,7 +17,7 @@ public class OrderSpecification {
     public Specification<Order> getOrderByFilter(FilterOrderRequest request) {
         return (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
-            predicates = preparePredicateLike("orderCode", request.getOrderCode(), criteriaBuilder, root, predicates);
+            predicates = preparePredicateLike("controlNumber", request.getControlNumber(), criteriaBuilder, root, predicates);
             predicates = preparePredicateLike("registrationDate", request.getRegistrationDate(), criteriaBuilder, root, predicates);
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         };

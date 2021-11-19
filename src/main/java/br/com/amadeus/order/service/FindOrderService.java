@@ -10,18 +10,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @AllArgsConstructor
 public class FindOrderService {
 
     private OrderRepository orderRepository;
     private OrderSpecification orderSpecification;
-
-    public List<Order> list() {
-        return orderRepository.findAll();
-    }
 
     public Order findById(Long id) {
         return orderRepository.findById(id).orElseThrow(() -> new OrderNotFoundException());

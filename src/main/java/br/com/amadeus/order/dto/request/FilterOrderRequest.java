@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class FilterOrderRequest {
-    private String orderCode;
+    private String controlNumber;
     private String registrationDate;
 }
