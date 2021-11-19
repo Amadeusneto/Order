@@ -3,6 +3,7 @@ package br.com.amadeus.order.exception;
 import br.com.amadeus.order.dto.response.OrderBaseResponse;
 import br.com.amadeus.order.exception.message.OrderBaseMessageSource;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -83,6 +84,11 @@ public class OrderGlobalExceptionHandler extends ResponseEntityExceptionHandler 
 
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     public ResponseEntity<Object> handleSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException e, WebRequest request) {
+        return handleException(OrderErrors.BAD_REQUEST_ERROR, e.getMessage(), e);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException e, WebRequest request) {
         return handleException(OrderErrors.BAD_REQUEST_ERROR, e.getMessage(), e);
     }
 
