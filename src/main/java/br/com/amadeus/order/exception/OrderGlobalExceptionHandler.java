@@ -15,6 +15,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 @ControllerAdvice
@@ -76,17 +77,17 @@ public class OrderGlobalExceptionHandler extends ResponseEntityExceptionHandler 
     }
 
     @ExceptionHandler(ControlNumberExistingException.class)
-    public ResponseEntity<Object> handleControlNumberExistingException(ControlNumberExistingException e, WebRequest request) {
+    public ResponseEntity<Object> handleControlNumberExistingException(SQLIntegrityConstraintViolationException e, WebRequest request) {
         return handleException(OrderErrors.BAD_REQUEST_ERROR, e.getMessage(), e);
     }
 
     @ExceptionHandler(OrderLimitedTenException.class)
-    public ResponseEntity<Object> orderLimitedTenException(ControlNumberExistingException e, WebRequest request) {
+    public ResponseEntity<Object> orderLimitedTenException(OrderLimitedTenException e, WebRequest request) {
         return handleException(OrderErrors.BAD_REQUEST_ERROR, e.getMessage(), e);
     }
 
     @ExceptionHandler(OrderWithoutProductsException.class)
-    public ResponseEntity<Object> orderWithoutProductsException(ControlNumberExistingException e, WebRequest request) {
+    public ResponseEntity<Object> orderWithoutProductsException(OrderWithoutProductsException e, WebRequest request) {
         return handleException(OrderErrors.BAD_REQUEST_ERROR, e.getMessage(), e);
     }
 
