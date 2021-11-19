@@ -4,6 +4,7 @@ import br.com.amadeus.order.dto.response.OrderBaseResponse;
 import br.com.amadeus.order.exception.message.OrderBaseMessageSource;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -77,8 +78,8 @@ public class OrderGlobalExceptionHandler extends ResponseEntityExceptionHandler 
                 .body(OrderBaseResponse.notOk(errors));
     }
 
-    @ExceptionHandler(ControlNumberExistingException.class)
-    public ResponseEntity<Object> handleControlNumberExistingException(ControlNumberExistingException e, WebRequest request) {
+    @ExceptionHandler(OrderControlNumberExistingException.class)
+    public ResponseEntity<Object> handleControlNumberExistingException(OrderControlNumberExistingException e, WebRequest request) {
         return handleException(OrderErrors.BAD_REQUEST_ERROR, e.getMessage(), e);
     }
 
@@ -92,6 +93,10 @@ public class OrderGlobalExceptionHandler extends ResponseEntityExceptionHandler 
         return handleException(OrderErrors.BAD_REQUEST_ERROR, e.getMessage(), e);
     }
 
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException e, WebRequest request) {
+        return handleException(OrderErrors.BAD_REQUEST_ERROR, e.getMessage(), e);
+    }
 
     @ExceptionHandler(OrderLimitedTenException.class)
     public ResponseEntity<Object>  handleorderLimitedTenException(OrderLimitedTenException e, WebRequest request) {

@@ -7,8 +7,4 @@ public class OrderLimitedTenException extends RuntimeException {
     public OrderLimitedTenException(String mensagem) {
         super(mensagem);
     }
-
-    public OrderLimitedTenException(String mensagem, Throwable causa) {
-        super(mensagem, causa);
-    }
 }

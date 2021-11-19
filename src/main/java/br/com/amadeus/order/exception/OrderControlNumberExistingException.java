@@ -1,10 +1,10 @@
 package br.com.amadeus.order.exception;
 
-public class ControlNumberExistingException extends RuntimeException {
+public class OrderControlNumberExistingException extends RuntimeException {
 
     private static final long serialVersionUID = 1869300553614629710L;
 
-    public ControlNumberExistingException(String mensagem) {
+    public OrderControlNumberExistingException(String mensagem) {
         super(mensagem);
     }
 }

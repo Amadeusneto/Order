@@ -8,7 +8,4 @@ public class OrderWithoutProductsException extends RuntimeException {
         super(mensagem);
     }
 
-    public OrderWithoutProductsException(String mensagem, Throwable causa) {
-        super(mensagem, causa);
-    }
 }

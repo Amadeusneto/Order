@@ -1,7 +1,7 @@
 package br.com.amadeus.order.service;
 
 import br.com.amadeus.order.dto.response.OrderList;
-import br.com.amadeus.order.exception.ControlNumberExistingException;
+import br.com.amadeus.order.exception.OrderControlNumberExistingException;
 import br.com.amadeus.order.exception.OrderLimitedTenException;
 import br.com.amadeus.order.exception.OrderWithoutProductsException;
 import br.com.amadeus.order.model.Order;
@@ -26,14 +26,14 @@ public class CreateOrderService {
         orderRepository.saveAll(orderList.getOrders());
     }
 
-    private void validateOrderWithoutProducts(Order order) throws ControlNumberExistingException {
+    private void validateOrderWithoutProducts(Order order) throws OrderControlNumberExistingException {
         if (order.getProduct() == null)
             throw new OrderWithoutProductsException("O pedido deve ter pelo menos um produto");
     }
 
     private void validateControlNumberExistingOrder(Order order) {
         if (orderRepository.findById(order.getControlNumber()).isPresent()) {
-            throw new ControlNumberExistingException("Numero de controle já existe.");
+            throw new OrderControlNumberExistingException("Numero de controle já existe.");
         }
     }
 
